@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KIET (Deemed to be University)</title>
+  <style>
+    /* Reset & Base Typography */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background-color: #f9fafb;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* Top Subtle Accent Strip */
+    .top-accent {
+      height: 4px;
+      background-color: #ea580c;
+      width: 100%;
+    }
+
+    /* Centered Header Section */
+    header {
+      background-color: #ffffff;
+      padding: 24px 15px 20px 15px;
+      text-align: center;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    /* Rectangular Institution Box */
+    .header-box {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-top: 3px solid #ea580c;
+      border-radius: 6px;
+      padding: 16px 28px;
+      max-width: 540px;
+      width: 100%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .header-logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .univ-logo-svg {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+
+    .univ-name {
+      font-size: 32px;
+      font-weight: 800;
+      color: #111827;
+      letter-spacing: 2px;
+      line-height: 1.1;
+    }
+
+    .univ-sub {
+      font-size: 13px;
+      font-weight: 600;
+      color: #4b5563;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-top: 2px;
+    }
+
+    .univ-location {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+
+    /* Centered Minimal Navbar */
+    nav {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links li a {
+      display: inline-block;
+      padding: 13px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #4b5563;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #ea580c;
+      border-bottom-color: #ea580c;
+    }
+
+    /* Layout Sections */
+    section {
+      padding: 38px 0;
+    }
+
+    .section-header {
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #111827;
+      display: inline-block;
+      border-bottom: 2px solid #ea580c;
+      padding-bottom: 4px;
+    }
+
+    /* Hero / Welcome Banner */
+    .hero {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 44px 0;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 26px;
+      color: #111827;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto 22px auto;
+      font-size: 15px;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 9px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-block;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-primary {
+      background-color: #ea580c;
+      color: #ffffff;
+      border: 1px solid #ea580c;
+    }
+
+    .btn-primary:hover {
+      background-color: #c2410c;
+      border-color: #c2410c;
+    }
+
+    .btn-outline {
+      background-color: #ffffff;
+      color: #374151;
+      border: 1px solid #d1d5db;
+    }
+
+    .btn-outline:hover {
+      border-color: #ea580c;
+      color: #ea580c;
+    }
+
+    /* Card Box Styles */
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+
+    .about-text {
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .about-text p {
+      margin-bottom: 14px;
+    }
+
+    .about-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* CSIT Spotlight */
+    .csit-card {
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-left: 4px solid #ea580c;
+      border-radius: 6px;
+      padding: 24px;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #fff7ed;
+      color: #ea580c;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid #ffedd5;
+      margin-bottom: 10px;
+    }
+
+    .csit-card h3 {
+      font-size: 18px;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .csit-card p {
+      font-size: 14px;
+      color: #4b5563;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .info-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .info-item {
+      background-color: #f9fafb;
+      border: 1px solid #f3f4f6;
+      padding: 10px 14px;
+      border-radius: 4px;
+    }
+
+    .info-item span {
+      display: block;
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .info-item strong {
+      font-size: 14px;
+      color: #111827;
+    }
+
+    /* Academics Simple Grid */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .course-item {
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      padding: 18px;
+      border-radius: 5px;
+    }
+
+    .course-item h4 {
+      font-size: 15px;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+
+    .course-item p {
+      font-size: 13px;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    /* Notice Board Simple List */
+    .notice-list {
+      list-style: none;
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .notice-item {
+      padding: 14px 18px;
+      border-bottom: 1px solid #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .notice-item:last-child {
+      border-bottom: none;
+    }
+
+    .notice-date {
+      color: #6b7280;
+      font-size: 12px;
+      min-width: 85px;
+    }
+
+    .notice-text {
+      flex: 1;
+      color: #374151;
+    }
+
+    .notice-tag {
+      font-size: 11px;
+      background-color: #f3f4f6;
+      color: #4b5563;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    /* Simple Enquiry Form */
+    .form-box {
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 24px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 4px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      font-size: 14px;
+      font-family: inherit;
+      color: #1f2937;
+      background-color: #ffffff;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #ea580c;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-feedback {
+      display: none;
+      margin-top: 12px;
+      padding: 10px;
+      background-color: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #15803d;
+      font-size: 13px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    /* Minimal Clean Footer */
+    footer {
+      background-color: #ffffff;
+      border-top: 1px solid #e5e7eb;
+      padding: 30px 0 20px 0;
+      font-size: 13px;
+      color: #6b7280;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .footer-address {
+      margin-bottom: 8px;
+      color: #4b5563;
+    }
+
+    .footer-links {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      margin: 0 8px;
+      color: #6b7280;
+    }
+
+    .footer-links a:hover {
+      color: #ea580c;
+    }
+
+    /* Small Screen Adjustments */
+    @media (max-width: 640px) {
+      .univ-name {
+        font-size: 28px;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .notice-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links li a {
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Minimal Orange Top Accent Line -->
+  <div class="top-accent"></div>
+
+  <!-- Perfectly Centered Header with Rectangular Box -->
+  <header>
+    <div class="header-box">
+      <div class="header-logo-row">
+        <!-- Clean vector academic crest / logo -->
+        <svg class="univ-logo-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#ea580c"/>
+          <path d="M4 10.5V16C4 16 7.5 19 12 19C16.5 19 20 16 20 16V10.5" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="22" y1="7" x2="22" y2="13" stroke="#ea580c" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h1 class="univ-name">KIET</h1>
+      </div>
+      <p class="univ-sub">(DEEMED TO BE UNIVERSITY)</p>
+      <p class="univ-location">Delhi-NCR, Ghaziabad, Uttar Pradesh - 201206</p>
+    </div>
+  </header>
+
+  <!-- Clean Centered Navbar -->
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#csit">CSIT Dept</a></li>
+      <li><a href="#academics">Academics</a></li>
+      <li><a href="#notices">Notices</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero" id="home">
+    <div class="container">
+      <h2>Welcome to KIET</h2>
+      <p>
+        Established in 1998, KIET is dedicated to delivering high-quality education in engineering, technology, and management through dedicated faculty, practical lab learning, and a focus on student growth.
+      </p>
+      <div class="btn-group">
+        <a href="#academics" class="btn btn-primary">Explore Courses</a>
+        <a href="#contact" class="btn btn-outline">Admission Enquiry</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- About Section -->
+    <section id="about">
+      <div class="section-header">
+        <h3 class="section-title">About the University</h3>
+      </div>
+      <div class="card about-text">
+        <p>
+          KIET (Deemed to be University) is located on the Meerut Road (NH-58) in Ghaziabad, Uttar Pradesh. Spread across a clean, green campus, the institution provides students with well-maintained classrooms, digital library resources, computer centers, and active innovation facilities.
+        </p>
+        <p>
+          The university offers undergraduate and postgraduate programs approved by regulatory authorities and is accredited with an NAAC 'A+' grade. Our emphasis remains on strong theoretical foundations balanced with practical laboratory sessions and continuous academic mentoring.
+        </p>
+      </div>
+    </section>
+
+    <!-- CSIT Department Spotlight -->
+    <section id="csit">
+      <div class="section-header">
+        <h3 class="section-title">CSIT Department Spotlight</h3>
+      </div>
+      <div class="csit-card">
+        <span class="badge">Department of Computer Science & Information Technology</span>
+        <h3>B.Tech in Computer Science & Information Technology (CSIT)</h3>
+        <p>
+          The CSIT Department focuses on core computing principles alongside contemporary web and information systems. Students learn foundational algorithms, systems engineering, and practical software design to prepare for technology careers and academic pursuits.
+        </p>
+
+        <div class="info-list">
+          <div class="info-item">
+            <span>Program Duration</span>
+            <strong>4 Years (8 Semesters)</strong>
+          </div>
+          <div class="info-item">
+            <span>Sanctioned Intake</span>
+            <strong>180 Seats</strong>
+          </div>
+          <div class="info-item">
+            <span>Focus Areas</span>
+            <strong>Web, Databases, Systems & Cloud</strong>
+          </div>
+        </div>
+
+        <p style="margin-bottom: 0; font-size: 13px; color: #6b7280;">
+          Department Contact: <strong style="color: #374151;">csit.office@kiet.edu</strong> | HOD Office: Academic Block A, 2nd Floor
+        </p>
+      </div>
+    </section>
+
+    <!-- Academics / Other Programs -->
+    <section id="academics">
+      <div class="section-header">
+        <h3 class="section-title">Other Key Programs</h3>
+      </div>
+      <div class="courses-grid">
+        <div class="course-item">
+          <h4>B.Tech - Computer Science (CSE)</h4>
+          <p>Covers computer algorithms, operating systems, compiler design, and software architecture.</p>
+        </div>
+        <div class="course-item">
+          <h4>B.Tech - CS (AI & ML)</h4>
+          <p>Introduction to machine intelligence, statistical modeling, neural networks, and data analytics.</p>
+        </div>
+        <div class="course-item">
+          <h4>B.Tech - Information Technology</h4>
+          <p>Focuses on enterprise networking, web servers, cybersecurity fundamentals, and databases.</p>
+        </div>
+        <div class="course-item">
+          <h4>MCA (Computer Applications)</h4>
+          <p>Postgraduate degree covering advanced application development, systems design, and project work.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Important Notices -->
+    <section id="notices">
+      <div class="section-header">
+        <h3 class="section-title">Important Notices</h3>
+      </div>
+      <ul class="notice-list">
+        <li class="notice-item">
+          <span class="notice-date">Oct 22, 2026</span>
+          <span class="notice-text">Information regarding Odd-Semester Examination registration schedule.</span>
+          <span class="notice-tag">Academics</span>
+        </li>
+        <li class="notice-item">
+          <span class="notice-date">Oct 14, 2026</span>
+          <span class="notice-text">Department of CSIT invites registrations for the upcoming Coding Sprint.</span>
+          <span class="notice-tag">Events</span>
+        </li>
+        <li class="notice-item">
+          <span class="notice-date">Oct 05, 2026</span>
+          <span class="notice-text">Guidelines for UP Government scholarship form verification in the Registrar office.</span>
+          <span class="notice-tag">Scholarship</span>
+        </li>
+        <li class="notice-item">
+          <span class="notice-date">Sep 28, 2026</span>
+          <span class="notice-text">Notification regarding library timings during mid-term assessments.</span>
+          <span class="notice-tag">General</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Admission Enquiry Form -->
+    <section id="contact">
+      <div class="section-header" style="text-align: center;">
+        <h3 class="section-title" style="display: inline-block;">Admission & General Enquiry</h3>
+      </div>
+
+      <div class="form-box">
+        <form id="enquiryForm" onsubmit="handleEnquiry(event)">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" placeholder="Enter your full name" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="example@gmail.com" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="course">Program of Interest</label>
+            <select id="course" required>
+              <option value="B.Tech CSIT" selected>B.Tech - Computer Science & IT (CSIT)</option>
+              <option value="B.Tech CSE">B.Tech - Computer Science & Engineering</option>
+              <option value="B.Tech AIML">B.Tech - CS (AI & ML)</option>
+              <option value="B.Tech IT">B.Tech - Information Technology</option>
+              <option value="MCA">Master of Computer Applications (MCA)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message / Query (Optional)</label>
+            <textarea id="message" rows="3" placeholder="Write your question or query here..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Enquiry</button>
+
+          <div class="form-feedback" id="feedbackMsg">
+            Thank you! Your enquiry has been received. The office will reach out to you.
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- Minimal Footer -->
+  <footer>
+    <div class="footer-content">
+      <p class="footer-address">
+        <strong>KIET (Deemed to be University)</strong><br>
+        Delhi-NCR, Meerut Road (NH-58), Ghaziabad, Uttar Pradesh - 201206
+      </p>
+      <div class="footer-links">
+        <a href="#home">Home</a> &bull;
+        <a href="#about">About</a> &bull;
+        <a href="#csit">CSIT Department</a> &bull;
+        <a href="#notices">Notices</a> &bull;
+        <a href="#contact">Contact</a>
+      </div>
+      <p>&copy; 2026 KIET (Deemed to be University). All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth submit handler for enquiry form
+    function handleEnquiry(event) {
+      event.preventDefault();
+      var feedback = document.getElementById('feedbackMsg');
+      feedback.style.display = 'block';
+
+      setTimeout(function() {
+        document.getElementById('enquiryForm').reset();
+        setTimeout(function() {
+          feedback.style.display = 'none';
+        }, 3000);
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
